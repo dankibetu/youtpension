@@ -1,0 +1,11 @@
+<?php
+
+//    $user_details = Config::get_assoc("select * from all_users_t where id = 1");
+$form_details = isset($_SESSION['form-input']) ? $_SESSION['form-input'] : [];
+$edit_user = Config::array_get($_GET, 'edit:user');
+if (!$form_details && is_numeric($edit_user)) {
+    $form_details = Config::get_assoc("select * from all_users_t where id = {$edit_user}")[0];
+}
+
+$form = Config::get_forms('customer', $form_details);
+echo $form;

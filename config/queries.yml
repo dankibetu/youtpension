@@ -1,0 +1,18 @@
+job-list : >
+  SELECT concat_ws (' - ', categories.category, jobs.job_name) job, jobs.id job_id
+    FROM hr_all_jobs jobs, hr_job_categories categories
+  WHERE jobs.category_id = categories.id
+  ORDER BY categories.category
+user-list : >
+    SELECT concat_ws('&nbsp;',last_name, first_name) AS "Full&nbsp;Name",
+             national_id "National ID",
+             phone "Phone",
+             email "Email",
+             year (from_days (datediff (CURRENT_DATE (), STR_TO_DATE (date_of_birth, '%d-%b-%Y')))) AS "Age",
+             gender "Gender",
+             concat_ws (' - ', categories.category, jobs.job_name) AS "Job Category",
+             if(users.active = 'Y','Active','Inactive') as "Account",
+             users.id "Action"
+        FROM all_users_t users, hr_all_jobs jobs, hr_job_categories categories
+       WHERE jobs.category_id = categories.id AND users.staff_group = jobs.id
+    ORDER BY users.id

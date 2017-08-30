@@ -1,0 +1,141 @@
+database :
+    type : mysql
+    host : 127.0.0.1
+    name : xe_pension
+    username : root
+    password : ''
+    
+stylesheet:
+    root  : ./assets/static/css/
+    code  : '<link rel="stylesheet" href="%s%s?version=%d"/>'
+    files : 
+        - bootstrap.min.css
+        - font-awesome.min.css
+        - nprogress.css
+        - green.css
+        - bootstrap-progressbar-3.3.4.min.css
+        - bootstrap-datetimepicker.min.css
+        - jqvmap.min.css
+        - daterangepicker.css
+        - dataTables.bootstrap.min.css
+        - buttons.bootstrap.min.css
+        - fixedHeader.bootstrap.min.css
+        - responsive.bootstrap.min.css
+        - scroller.bootstrap.min.css
+        - custom.css
+
+login-stylesheet:
+    root  : ./assets/static/css/
+    code  : '<link rel="stylesheet" href="%s%s?version=%d"/>'
+    files : 
+        - bootstrap.min.css
+        - font-awesome.min.css
+        - nprogress.css
+        - animate.min.css
+        - custom.min.css
+        - custom.login.css
+        
+login-javascript:
+    root  : ./assets/static/js/
+    code  : '<script src="%s%s?version=%d"></script>'
+    files :
+        - jquery.min.js
+        - bootstrap.min.js
+        - jquery.inputmask.bundle.min.js
+        - notify.min.js
+        - validator.js
+        - login.js
+        
+javascript:
+    root  : ./assets/static/js/
+    code  : '<script src="%s%s?version=%d"></script>'
+    files :
+        - jquery.min.js
+        - bootstrap.min.js
+        - fastclick.js
+        - nprogress.js
+        - Chart.min.js
+        - gauge.min.js
+        - bootstrap-progressbar.min.js
+        - icheck.min.js
+        - skycons.js
+        - jquery.flot.js
+        - jquery.flot.pie.js
+        - jquery.flot.time.js
+        - jquery.flot.stack.js
+        - jquery.flot.resize.js
+        - jquery.flot.orderBars.js
+        - jquery.flot.spline.min.js
+        - curvedLines.js
+        - date.js
+        - jquery.vmap.js
+        - jquery.vmap.world.js
+        - jquery.vmap.sampledata.js
+        - moment.min.js
+        - daterangepicker.js
+        - validator.js
+        - bootstrap-datetimepicker.min.js
+        - jquery.inputmask.bundle.min.js
+        - notify.min.js
+        - jquery.dataTables.min.js
+        - dataTables.bootstrap.min.js
+        - dataTables.buttons.min.js
+        - buttons.bootstrap.min.js
+        - buttons.flash.min.js
+        - buttons.html5.min.js
+        - buttons.print.min.js
+        - dataTables.fixedHeader.min.js
+        - dataTables.keyTable.min.js
+        - dataTables.responsive.min.js
+        - responsive.bootstrap.js
+        - dataTables.scroller.min.js
+        - jszip.min.js
+        - pdfmake.min.js
+        - vfs_fonts.js
+        - custom.js
+        
+        
+sub-menu : &user
+        parameter : session
+        url : '&%s=%s%s'
+        navigation : 
+            - Logout :
+                icon : glyphicon glyphicon-off
+                href : logout
+                query : ''
+                class : 'pull-right'
+                load : ''
+                title : login
+            - Account:
+                icon : fa fa-wrench
+                href : password
+                query : ''
+                class : 'pull-right'
+                load : ''
+                title : Account Information
+menu:
+    user: *user
+    quick-access : *user
+    hr:
+        parameter : action
+        url : './?%s=%s%s'
+        navigation :
+            - Requests :
+                icon : fa fa-bullhorn
+                href : requests
+                default : true
+                load : ''
+                query : ''
+                title : Staff Requests
+            - Staff Enrollment :
+                icon : fa fa-users
+                href : staff:enrollment
+                query : ''
+                load : 'enrollment.part.phtml'
+                title : Staff Enrollment
+            - Staff Management:
+                icon : fa fa-tasks
+                href : staff:management
+                query: ''
+                load : 'management.part.phtml'
+                title : Manage Staff

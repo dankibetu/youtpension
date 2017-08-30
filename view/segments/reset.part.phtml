@@ -1,0 +1,27 @@
+<div id="login-wrapper" class="container">
+    <div class="row">
+        <div class="Absolute-Center is-Responsive">
+            <div class="col-sm-12 col-md-12 login-wrapper rounded">
+                <div class="alert alert-success login-header" role="alert">
+                    <?php echo (is_null($parameters) ? 'Application' : $parameters['application']) . ' Password Reset'; ?>
+                </div>
+                <form action="./controllers/actions.php?action=reset" method="post" id="loginForm">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input class="form-control" type="email" name='reset[email]' autocomplete="off" placeholder="Username"/>          
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <input class="form-control" type="text" name='reset[national-id]' placeholder="National ID" autocomplete="off"/>     
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-def btn-block">Reset</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <a href="./">Forgot Password</a>
+                    </div>
+                </form>        
+            </div>  
+        </div>    
+    </div>
+</div>

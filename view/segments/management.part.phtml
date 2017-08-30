@@ -1,0 +1,26 @@
+<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <?php
+    $users = Config::get_assoc('user-list', true);
+    $tbody = '<tbody>';
+    $columns = $users ? array_keys($users[0]) : [];
+    foreach ($users as $user) {
+        $tbody .= "<tr>";
+        foreach ($user as $column => $value) {
+            if (strtolower($column) == 'action'):
+                $tbody .= sprintf('<td><a href="%s%s"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></td>', './?action=staff:enrollment&edit:user=', $value);
+            else:
+                $tbody .= sprintf('<td>%s</td>', $value);
+            endif;
+        }
+        $tbody .= "</tr>";
+    }
+    $tbody .= '</tbody>';
+    $thead = '<thead><tr>';
+    foreach ($columns as $column) {
+        $thead .= sprintf('<td>%s</td>', $column);
+    }
+    $thead .= "</tr></thead>";
+
+    echo $thead . $tbody;
+    ?>
+</table>

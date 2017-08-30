@@ -1,0 +1,72 @@
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form novalidate="novalidate" action="./controllers/actions.php?controller=_signin" method="post">
+                        <h1>Login</h1>
+                        <div class="item">
+                            <input type="email" name="_signin[email]" class="form-control" placeholder="Email" required="required" />
+                        </div>
+                        <div class="item">
+                            <input type="password" name="_signin[password]" class="form-control" placeholder="Password" required="required" />
+                        </div>
+                        <div>
+                            <button class="btn btn-default submit" type="submit">Log in</button>
+                            <a href="#signup" class="to_register">Lost your password?</a>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <?php printf('<h1>%s %s</h1><p>©%d All Rights Reserved. Developed and maintained by %s</p>', Config::array_get($parameters, 'logo', ''), Config::array_get($parameters, 'application', ''), date('Y'), Config::array_get($parameters, 'developer', '')); ?>
+                            </div>
+                    </form>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    <form novalidate="novalidate" action="./controllers/actions.php?controller=_alternate" method="post">
+                        <h1>Alternate Login</h1>
+                        <div class="item">
+                            <input type="text" name="_alternate[national_id]" pattern="numeric" class="form-control" placeholder="National ID" required="required" />
+                        </div>
+                        <div class="item">
+                            <input type="email" name="_alternate[email]" class="form-control" placeholder="Email" required="required" />
+                        </div>
+                        <div class="item">
+                            <input type="text" name="_alternate[phone]" class="form-control" placeholder="Phone Number" required="required" 
+                                   pattern = '[\+]\d{3}-[\d]{3}-[\d]{3}-[\d]{3}' data-inputmask = "'mask' : '+254-799-999-999'"
+                                   />
+                        </div>
+                        <div>
+                            <button class="btn btn-default submit" href="index.html">Submit</button>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">Already a member ?
+                                <a href="#signin" class="to_register"> Log in </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,23 @@
+<?php
+echo Config::get_assets(Config::array_get($parameters, 'scripts', 'javascript'));
+?>
+
+<?php
+
+if (isset($_SESSION['cgi'])) {
+    $script = ('<script>
+                $(document).ready(function () {
+                    $.notify("%s", {
+                        globalPosition:"right middle", 
+                        className: "%s"
+                    });
+                });
+            </script>');
+    printf($script, $_SESSION['cgi']['message'], $_SESSION['cgi']['status']);
+    unset($_SESSION['cgi']);
+}
+?>
+
+
+</body>
+</html>
